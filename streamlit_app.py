@@ -166,95 +166,28 @@ menu_list = [
 # SLIDE 1: JUDUL, SAMBUTAN & TUJUAN
 # =====================================
 if st.session_state.current_page == "slide1":
-
     st.snow()
+    st.markdown("<div class='title'>🧮 ThermoCalculator 🌡️</div>", unsafe_allow_html=True)
+    st.markdown("<div class='subtitle'>Kalkulator & Modul Edukasi Termodinamika Universal</div>", unsafe_allow_html=True)
 
-    # JUDUL UTAMA
-    st.markdown("""
-    <div style="text-align:center; margin-top:10px;">
-
-        <span style="
-            font-size:72px;
-            vertical-align:middle;
-        ">
-            🧮
-        </span>
-
-        <span class="animated-title">
-            ThermoCalculator
-        </span>
-
-        <span style="
-            font-size:72px;
-            vertical-align:middle;
-        ">
-            🌡️
-        </span>
-
-    </div>
-    """, unsafe_allow_html=True)
-
-    st.markdown(
-        "<div class='subtitle'>Kalkulator & Modul Edukasi Termodinamika Universal</div>",
-        unsafe_allow_html=True
-    )
-
-    # KOTAK PENJELASAN
     st.markdown("""
     <div class='intro-box'>
-
-        <h3 style='margin-top:0; color:#93c5fd;'>
-            🎯 Selamat Datang di ThermoCalculator!
-        </h3>
-
-        <p>
-            <b>ThermoCalculator</b> adalah platform komputasi termodinamika
-            interaktif yang dirancang untuk membantu mahasiswa,
-            akademisi, dan praktisi dalam menyelesaikan analisis energi,
-            gas, serta reaksi kimia secara cepat dan presisi.
-        </p>
-
-        <hr style='border:0;
-                   border-top:1px solid rgba(255,255,255,0.12);
-                   margin:20px 0;'>
-
-        <h4 style='color:#a78bfa;'>
-            🚀 Tujuan & Kegunaan Aplikasi
-        </h4>
-
-        <ul style='line-height:1.9;'>
-
-            <li>
-                <b>Automasi Perhitungan:</b>
-                Mempercepat pencarian variabel termodinamika yang hilang
-                tanpa manipulasi rumus manual yang rumit.
-            </li>
-
-            <li>
-                <b>Validasi Laboratorium & Studi:</b>
-                Membantu pengecekan data hasil praktikum seperti
-                entalpi reaktan/produk, kalor gas, dan hukum Hess.
-            </li>
-
-            <li>
-                <b>Pemahaman Konseptual:</b>
-                Menyediakan penurunan rumus langkah demi langkah
-                (step-by-step) untuk mempermudah proses belajar mandiri.
-            </li>
-
+        <h3 style='margin-top:0; color:#93c5fd;'>🎯 Selamat Datang di ThermoCalculator!</h3>
+        <p><b>ThermoCalculator</b> adalah platform komputasi termodinamika interaktif yang dirancang untuk membantu mahasiswa, 
+        akademisi, dan praktisi menyelesaikan analisis energi, gas, dan reaksi kimia secara presisi.</p>
+        <hr style='border: 0; border-top: 1px solid rgba(255,255,255,0.1); margin: 20px 0;'>
+        <h4 style='color:#a78bfa;'>🚀 Tujuan & Kegunaan Aplikasi:</h4>
+        <ul style='margin-bottom:0; line-height: 1.8;'>
+            <li><b>Automasi Perhitungan:</b> Mempercepat pencarian variabel termodinamika yang hilang tanpa manipulasi rumus manual yang rumit.</li>
+            <li><b>Validasi Laboratorium & Studi:</b> Membantu pengecekan data hasil praktikum (seperti entalpi reaktan/produk, kalor gas, dan hukum Hess).</li>
+            <li><b>Pemahaman Konseptual:</b> Menyediakan penurunan rumus langkah demi langkah (step-by-step) untuk mempermudah proses belajar mandiri.</li>
         </ul>
-
     </div>
     """, unsafe_allow_html=True)
 
-    # TOMBOL LANJUT
     _, col_btn, _ = st.columns([1, 2, 1])
-
     with col_btn:
-        if st.button(
-            "🚀 Lanjut ke Pemilihan Modul",
-            key="next_to_slide2"
-        ):
+        if st.button("Lanjut ke Pemilihan Modul ➡️", key="next_to_slide2"):
             st.session_state.current_page = "slide2"
             st.rerun()
 # =====================================
