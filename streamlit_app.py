@@ -505,21 +505,26 @@ elif st.session_state.current_page == "calc_page":
             else:
                 st.error("Volume tidak valid untuk rasio logaritma alami.")
 
-  # 14. EDUKASI ISOTOP GAS
+     # 14. EDUKASI ISOTOP GAS
     elif menu == "Edukasi Isotop Gas":
+        # Bagian teks dipisah dengan st.latex agar rumusnya merender sempurna
         st.markdown("""
         ### 🧪 Efek Isotop pada Sifat Termodinamika Gas
-        Penggantian unsur dengan isotopnya yang lebih berat (misal $H_2 \rightarrow D_2$) akan mengubah sifat fisis makro zat tanpa mengganggu struktur konfigurasi elektron luarnya.
+        Penggantian unsur dengan isotopnya yang lebih berat (misal $H_2 \\rightarrow D_2$) akan mengubah sifat fisis makro zat tanpa mengganggu struktur konfigurasi elektron luarnya.
         
         #### Poin Teoretis Utama:
         1. **Kecepatan Efektif ($v_{rms}$):** Berbanding terbalik dengan akar massa molar ($M$). Partikel isotop berat bergerak lebih lambat pada kesetimbangan termal yang sama.
-        $$v_{rms} = \sqrt{\frac{3RT}{M}}$$
+        """)
+        
+        # Menggunakan st.latex agar rumus pecahan dan akar tampil sempurna
+        st.latex(r"v_{rms} = \sqrt{\frac{3RT}{M}}")
+        
+        st.markdown("""
         2. **Pergeseran Kapasitas Kalor:** Perubahan massa merubah momen inersia molekul serta tingkat energi vibrasi kuantumnya.
         """)
         
         st.write("")
         st.subheader("📊 Komputasi Nilai Efektif ($v_{rms}$) antar Isotop")
-        
         pilihan_gas = st.selectbox(
             "Pilih Kelompok Gas / Isotop:",
             ["Hidrogen (H₂ vs D₂)", "Uranium Heksafluorida (²³⁵UF₆ vs ²³⁸UF₆)", "Uap Air (H₂O vs D₂O)"]
