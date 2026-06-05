@@ -245,7 +245,7 @@ elif st.session_state.current_page == "slide2":
         st.session_state.current_page = "slide1"
         st.rerun()
 
-    st.markdown("<div class='menu-title'>📊 Kategori Kalkulator Termodinamika</div>", unsafe_allow_html=True)
+    st.markdown("<div class='menu-title'>⚗️ Kategori Kalkulator Termodinamika  🌡️</div>", unsafe_allow_html=True)
 
     col1, col2 = st.columns(2)
 
