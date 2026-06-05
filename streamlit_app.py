@@ -162,7 +162,6 @@ menu_list = [
     "ΔH Reaksi", "Energi Gibbs", "Entropi", "Gas Ideal", "Gas Nyata",
     "Proses Isobarik", "Proses Isokhorik", "Proses Isotermal", "Edukasi Isotop Gas"
 ]
-
 # =====================================
 # SLIDE 1: JUDUL, SAMBUTAN & TUJUAN
 # =====================================
