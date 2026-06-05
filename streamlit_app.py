@@ -242,23 +242,6 @@ if st.session_state.current_page == "slide1":
             st.session_state.current_page = "slide2"
             st.rerun()
 # =====================================
-# SLIDE 2: HALAMAN PEMILIHAN MODUL
-# =====================================
-if st.session_state.current_page == "slide2":
-    
-    # Judul halaman pemilihan modul (Bisa kamu sesuaikan dengan kebutuhanmu)
-    st.markdown("## Pilih Modul Perhitungan")
-    
-    # Contoh tombol pilihan modul milikmu (misal Hukum 1 Termodinamika)
-    # st.button("Hukum 1 Termodinamika")
-    
-    st.write("")
-    
-    # Tombol Kembali ke Slide 1
-    if st.button("Kembali", key="back_to_slide1"):
-        st.session_state.current_page = "slide1"
-        st.rerun()
-# =====================================
 # SLIDE 2: PILIHAN MODUL KALKULATOR
 # =====================================
 elif st.session_state.current_page == "slide2":
