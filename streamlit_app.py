@@ -219,26 +219,41 @@ if st.session_state.current_page == "slide1":
 
     st.write("")
 
-    # --- BAGIAN YANG DIUBAH MENGIKUTI FOTO ---
-    # BOX PENJELASAN
-    # st.info(...) telah diubah menjadi st.markdown(...)
-    # untuk menghilangkan bingkai info box dan warna latar belakang,
-    # sehingga sesuai dengan tampilan teks langsung di foto.
-    
+    # =========================================================================
+    # BOX PENJELASAN (DIUBAH TOTAL MENGIKUTI TAMPILAN FOTO)
+    # =========================================================================
     st.markdown("""
-🎯 **Selamat Datang di ThermoCalculator!**
-
-**ThermoCalculator** adalah platform komputasi termodinamika interaktif yang dirancang untuk membantu mahasiswa, akademisi, dan praktisi menyelesaikan analisis energi, gas, dan reaksi kimia secara cepat dan presisi.
-
----
-
-🚀 **Tujuan & Kegunaan Aplikasi**
-
-*   **Automasi Perhitungan** : Mempercepat pencarian variabel termodinamika yang hilang tanpa manipulasi rumus manual yang rumit.
-*   **Validasi Laboratorium & Studi** : Membantu pengecekan data hasil praktikum seperti entalpi reaktan/produk, kalor gas, dan hukum Hess.
-*   **Pemahaman Konseptual** : Menyediakan penurunan rumus langkah demi langkah (step-by-step) untuk mempermudah proses belajar mandiri.
-""", unsafe_allow_html=True)
-    # ----------------------------------------------
+    <div style="
+        background-color: rgba(255, 255, 255, 0.08); 
+        padding: 24px; 
+        border-radius: 15px; 
+        color: white;
+        font-family: 'Source Sans Pro', sans-serif;
+    ">
+        <h3 style="color: white; margin-top: 0px; font-size: 24px; font-weight: 700;">
+            🎯 Selamat Datang di ThermoCalculator!
+        </h3>
+        <p style="font-size: 17px; line-height: 1.6; margin-bottom: 25px;">
+            <b>ThermoCalculator</b> adalah platform komputasi termodinamika interaktif yang dirancang untuk membantu mahasiswa, akademisi, dan praktisi menyelesaikan analisis energi, gas, dan reaksi kimia secara cepat dan presisi.
+        </p>
+        <hr style="border: 0; border-top: 1px dashed rgba(255,255,255,0.3); margin: 20px 0;">
+        <h3 style="color: white; font-size: 24px; font-weight: 700; margin-bottom: 20px;">
+            🚀 Tujuan & Kegunaan Aplikasi
+        </h3>
+        <ul style="list-style-type: disc; padding-left: 20px; font-size: 17px; line-height: 1.8;">
+            <li style="margin-bottom: 10px;">
+                <b>Automasi Perhitungan</b>: Mempercepat pencarian variabel termodinamika yang hilang tanpa manipulasi rumus manual yang rumit.
+            </li>
+            <li style="margin-bottom: 10px;">
+                <b>Validasi Laboratorium & Studi</b>: Membantu pengecekan data hasil praktikum seperti entalpi reaktan/produk, kalor gas, dan hukum Hess.
+            </li>
+            <li style="margin-bottom: 10px;">
+                <b>Pemahaman Konseptual</b>: Menyediakan penurunan rumus langkah demi langkah (step-by-step) untuk mempermudah proses belajar mandiri.
+            </li>
+        </ul>
+    </div>
+    """, unsafe_allow_html=True)
+    # =========================================================================
 
     st.write("")
 
@@ -252,7 +267,7 @@ if st.session_state.current_page == "slide1":
             st.session_state.current_page = "slide2"
             st.rerun()
 
-# --- Placeholder untuk Slide 2 ---
+# --- Placeholder untuk Slide 2 (Supaya tombol berfungsi) ---
 if st.session_state.current_page == "slide2":
     st.title("Halaman Pemilihan Modul")
     if st.button("Kembali"):
