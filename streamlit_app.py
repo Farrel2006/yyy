@@ -169,9 +169,7 @@ if st.session_state.current_page == "slide1":
 
     st.snow()
 
-    # =====================================
     # JUDUL UTAMA
-    # =====================================
     st.markdown("""
     <div style="text-align:center; margin-top:10px;">
 
@@ -201,9 +199,7 @@ if st.session_state.current_page == "slide1":
         unsafe_allow_html=True
     )
 
-    # =====================================
     # KOTAK PENJELASAN
-    # =====================================
     st.markdown("""
     <div class='intro-box'>
 
@@ -212,11 +208,10 @@ if st.session_state.current_page == "slide1":
         </h3>
 
         <p>
-            <b>ThermoCalculator</b> adalah platform komputasi
-            termodinamika interaktif yang dirancang untuk membantu
-            mahasiswa, akademisi, dan praktisi dalam menyelesaikan
-            analisis energi, gas, serta reaksi kimia secara cepat
-            dan presisi.
+            <b>ThermoCalculator</b> adalah platform komputasi termodinamika
+            interaktif yang dirancang untuk membantu mahasiswa,
+            akademisi, dan praktisi dalam menyelesaikan analisis energi,
+            gas, serta reaksi kimia secara cepat dan presisi.
         </p>
 
         <hr style='border:0;
@@ -231,8 +226,8 @@ if st.session_state.current_page == "slide1":
 
             <li>
                 <b>Automasi Perhitungan:</b>
-                Mempercepat pencarian variabel termodinamika yang
-                hilang tanpa manipulasi rumus manual yang rumit.
+                Mempercepat pencarian variabel termodinamika yang hilang
+                tanpa manipulasi rumus manual yang rumit.
             </li>
 
             <li>
@@ -252,9 +247,7 @@ if st.session_state.current_page == "slide1":
     </div>
     """, unsafe_allow_html=True)
 
-    # =====================================
     # TOMBOL LANJUT
-    # =====================================
     _, col_btn, _ = st.columns([1, 2, 1])
 
     with col_btn:
