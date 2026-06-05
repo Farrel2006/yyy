@@ -175,8 +175,8 @@ if st.session_state.current_page == "slide1":
         <span style="font-size:68px;">🌡️</span>
     </div>
     """, unsafe_allow_html=True)
-    
     st.markdown("<div class='subtitle'>Kalkulator & Modul Edukasi Termodinamika Universal</div>", unsafe_allow_html=True)
+    
     <div class='intro-box'>
         <h3 style='margin-top:0; color:#93c5fd;'>🎯 Selamat Datang di ThermoCalculator!</h3>
         <p><b>ThermoCalculator</b> adalah platform komputasi termodinamika interaktif yang dirancang untuk membantu mahasiswa, 
