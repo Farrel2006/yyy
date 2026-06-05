@@ -166,36 +166,6 @@ menu_list = [
 # SLIDE 1: JUDUL, SAMBUTAN & TUJUAN
 # =====================================
 if st.session_state.current_page == "slide1":
-
-    st.markdown("""
-    <style>
-    .animated-title {
-        font-size: 68px;
-        font-weight: 900;
-        background: linear-gradient(90deg, #38bdf8, #60a5fa, #818cf8, #a855f7, #d946ef, #38bdf8);
-        background-size: 400% auto;
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        animation: gradientFlow 6s linear infinite, floatTitle 3s ease-in-out infinite;
-        text-shadow: 0 0 30px rgba(147,197,253,0.8);
-    }
-
-    @keyframes gradientFlow {
-        0% { background-position: 0% center; }
-        100% { background-position: 400% center; }
-    }
-
-    .emoji-title {
-        font-size: 72px;
-        vertical-align: middle;
-        display: inline-block;
-        animation: floatTitle 3s ease-in-out infinite;
-    }
-    </style>
-    """, unsafe_allow_html=True)
-
-    st.snow()
-
     st.markdown("""
     <div style="text-align:center; margin-top:10px;">
         <span class="emoji-title">🧮</span>
