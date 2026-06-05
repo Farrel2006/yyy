@@ -162,12 +162,6 @@ menu_list = [
     "ΔH Reaksi", "Energi Gibbs", "Entropi", "Gas Ideal", "Gas Nyata",
     "Proses Isobarik", "Proses Isokhorik", "Proses Isotermal", "Edukasi Isotop Gas"
 ]
-import streamlit as st
-
-# Inisialisasi state halaman jika belum ada
-if 'current_page' not in st.session_state:
-    st.session_state.current_page = "slide1"
-
 # =====================================
 # SLIDE 1: JUDUL, SAMBUTAN & TUJUAN
 # =====================================
@@ -219,41 +213,22 @@ if st.session_state.current_page == "slide1":
 
     st.write("")
 
-    # -------------------------------------------------------------------------
-    # BOX PENJELASAN (HANYA MUNCUL DI SLIDE 1 - SESUAI FOTO PERTAMA)
-    # -------------------------------------------------------------------------
-    st.markdown("""
-    <div style="
-        background-color: rgba(255, 255, 255, 0.08); 
-        padding: 24px; 
-        border-radius: 15px; 
-        color: white;
-        font-family: 'Source Sans Pro', sans-serif;
-    ">
-        <h3 style="color: white; margin-top: 0px; font-size: 24px; font-weight: 700;">
-            🎯 Selamat Datang di ThermoCalculator!
-        </h3>
-        <p style="font-size: 17px; line-height: 1.6; margin-bottom: 25px;">
-            <b>ThermoCalculator</b> adalah platform komputasi termodinamika interaktif yang dirancang untuk membantu mahasiswa, akademisi, dan praktisi menyelesaikan analisis energi, gas, dan reaksi kimia secara cepat dan presisi.
-        </p>
-        <hr style="border: 0; border-top: 1px dashed rgba(255,255,255,0.3); margin: 20px 0;">
-        <h3 style="color: white; font-size: 24px; font-weight: 700; margin-bottom: 20px;">
-            🚀 Tujuan & Kegunaan Aplikasi
-        </h3>
-        <ul style="list-style-type: disc; padding-left: 20px; font-size: 17px; line-height: 1.8;">
-            <li style="margin-bottom: 10px;">
-                <b>Automasi Perhitungan</b>: Mempercepat pencarian variabel termodinamika yang hilang tanpa manipulasi rumus manual yang rumit.
-            </li>
-            <li style="margin-bottom: 10px;">
-                <b>Validasi Laboratorium & Studi</b>: Membantu pengecekan data hasil praktikum seperti entalpi reaktan/produk, kalor gas, dan hukum Hess.
-            </li>
-            <li style="margin-bottom: 10px;">
-                <b>Pemahaman Konseptual</b>: Menyediakan penurunan rumus langkah demi langkah (step-by-step) untuk mempermudah proses belajar mandiri.
-            </li>
-        </ul>
-    </div>
-    """, unsafe_allow_html=True)
-    # -------------------------------------------------------------------------
+    # BOX PENJELASAN
+    st.info("""
+ 🎯 **Selamat Datang di ThermoCalculator!**
+
+**ThermoCalculator** adalah platform komputasi termodinamika interaktif yang dirancang untuk membantu mahasiswa, akademisi, dan praktisi menyelesaikan analisis energi, gas, dan reaksi kimia secara cepat dan presisi.
+
+---
+
+🚀 **Tujuan & Kegunaan Aplikasi**
+
+• **Automasi Perhitungan** : Mempercepat pencarian variabel termodinamika yang hilang tanpa manipulasi rumus manual yang rumit.
+
+• **Validasi Laboratorium & Studi** : Membantu pengecekan data hasil praktikum seperti entalpi reaktan/produk, kalor gas, dan hukum Hess.
+
+• **Pemahaman Konseptual** : Menyediakan penurunan rumus langkah demi langkah (step-by-step) untuk mempermudah proses belajar mandiri.
+""")
 
     st.write("")
 
@@ -266,7 +241,6 @@ if st.session_state.current_page == "slide1":
         ):
             st.session_state.current_page = "slide2"
             st.rerun()
-
 # =====================================
 # SLIDE 2: HALAMAN PEMILIHAN MODUL
 # =====================================
