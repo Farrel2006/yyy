@@ -193,106 +193,237 @@ if st.session_state.current_page == "slide1":
             st.rerun()
 
 # =====================================
-# SLIDE 2: PILIHAN MODUL KALKULATOR
+# SLIDE 2: INDEX / MODUL SELECTION (KODE UTUH SATU HALAMAN)
 # =====================================
 elif st.session_state.current_page == "slide2":
+    # 1. CSS Khusus untuk Duplikasi Warna & Layout Sesuai Foto User
+    st.markdown("""
+    <style>
+    /* Latar belakang halaman berwarna ungu indigo pekat sesuai foto */
+    .stApp {
+        background: linear-gradient(180deg, #4c1d95, #2e1065) !important;
+    }
     
-   st.markdown("<div class='title' style='font-size:50px;'>📊 Modul Kalkulasi Termodinamika</div>", unsafe_allow_html=True)
-    st.markdown("<div class='subtitle'>Pilih modul berdasarkan kelompok materi</div>", unsafe_allow_html=True)
+    /* Judul Utama Modul Kalkulasi (Putih/Biru Cerah) */
+    .menu-title {
+        color: #ffffff !important;
+        font-size: 32px !important;
+        font-weight: 800 !important;
+        margin-bottom: 25px;
+        text-shadow: 0px 2px 4px rgba(0,0,0,0.5);
+    }
+    
+    /* Desain 4 Kotak Kartu dengan Gradasi Ungu-Pink Menyala Sesuai Tombol Asli */
+    .category-card {
+        background: linear-gradient(135deg, #a855f7, #ec4899) !important;
+        border: 1px solid rgba(255, 255, 255, 0.4) !important;
+        border-radius: 20px !important; /* Melengkung halus seperti tombol di foto */
+        padding: 20px !important;
+        margin-top: 15px;
+        margin-bottom: 8px;
+        box-shadow: 0 0 15px rgba(236, 72, 153, 0.4) !important; /* Efek neon/glow */
+    }
+    
+    /* Header di dalam kartu */
+    .category-header {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+    }
+    
+    /* Ikon Bulat Putih Transparan */
+    .icon-circle {
+        background: rgba(255, 255, 255, 0.25) !important; 
+        width: 36px;
+        height: 36px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #ffffff !important;
+        font-weight: bold;
+        font-size: 16px;
+    }
+    
+    .category-title {
+        color: #ffffff !important;
+        font-size: 19px !important;
+        font-weight: 700 !important;
+    }
+    
+    /* Mengubah Tombol Submenu di bawah kartu menjadi Putih Cerah dengan ikon petir oranye */
+    div[data-testid="stHorizontalBlock"] div[data-testid="stButton"] button {
+        background-color: transparent !important;
+        color: #f1f5f9 !important; /* Teks putih keabu-abuan cerah */
+        border: none !important;
+        text-align: left !important;
+        padding: 6px 4px !important;
+        font-size: 14px !important;
+        font-weight: 600 !important;
+        box-shadow: none !important;
+        width: auto !important;
+    }
+    
+    /* Efek Hover Submenu */
+    div[data-testid="stHorizontalBlock"] div[data-testid="stButton"] button:hover {
+        color: #fde047 !important; /* Berubah kekuningan cerah saat disentuh cursor */
+        background-color: transparent !important;
+        text-decoration: underline !important;
+    }
+    
+    /* Tombol Kembali (Pojok Kiri Atas) berwarna ungu transparan murni */
+    .back-btn div[data-testid="stButton"] button {
+        background: linear-gradient(90deg, #3b82f6, #8b5cf6) !important;
+        color: #ffffff !important;
+        border: 1px solid rgba(255, 255, 255, 0.3) !important;
+        border-radius: 15px !important;
+        width: auto !important;
+        padding: 8px 20px !important;
+        font-weight: bold !important;
+    }
+    </style>
+    """, unsafe_allow_html=True)
 
-    if st.button("⬅️ Kembali ke Menu Pengantar"):
+    # Header Judul Menu
+    st.markdown("<div class='menu-title'>Modul Kalkulasi Termodinamika</div>", unsafe_allow_html=True)
+    
+    # Tombol Kembali ke Pengantar
+    st.markdown("<div class='back-btn'>", unsafe_allow_html=True)
+    if st.button("⬅️ Kembali ke Menu Pengantar", key="back_to_slide1"):
         st.session_state.current_page = "slide1"
         st.rerun()
+    st.markdown("</div>", unsafe_allow_html=True)
 
-    st.write("")
+    # --- GRID UTAMA REPLIKA DESAIN ---
+    main_col1, main_col2 = st.columns(2)
 
-    col1, col2 = st.columns(2)
-
-    with col1:
-        with st.container():
-            st.markdown("### 🔥 Energetika Dasar")
-
-            if st.button("Hukum 1 Termodinamika"):
+    with main_col1:
+        # =====================================
+        # KARTU 1: ENERGETIKA DASAR
+        # =====================================
+        st.markdown("""
+        <div class='category-card'>
+            <div class='category-header'>
+                <div class='icon-circle'>⚡</div>
+                <div class='category-title'>Energetika Dasar</div>
+            </div>
+        </div>
+        """, unsafe_allow_html=True)
+        
+        sub_col1, sub_col2 = st.columns(2)
+        with sub_col1:
+            if st.button("🔸 Hukum 1 Termo", key="btn_h1"):
                 st.session_state.menu = "Hukum 1 Termodinamika"
                 st.session_state.current_page = "calc_page"
                 st.rerun()
-
-            if st.button("Usaha"):
-                st.session_state.menu = "Usaha"
-                st.session_state.current_page = "calc_page"
-                st.rerun()
-
-            if st.button("Kalor"):
+            if st.button("🔸 Kalor (Heat)", key="btn_kalor"):
                 st.session_state.menu = "Kalor"
                 st.session_state.current_page = "calc_page"
                 st.rerun()
-
-            if st.button("Entropi"):
+        with sub_col2:
+            if st.button("🔸 Usaha (Work)", key="btn_usaha"):
+                st.session_state.menu = "Usaha"
+                st.session_state.current_page = "calc_page"
+                st.rerun()
+            if st.button("🔸 Entropi Dasar", key="btn_entropi_dsr"):
                 st.session_state.menu = "Entropi"
                 st.session_state.current_page = "calc_page"
                 st.rerun()
 
-        st.markdown("---")
-
-        with st.container():
-            st.markdown("### 💨 Fisika Gas")
-
-            if st.button("Gas Ideal"):
+        # =====================================
+        # KARTU 3: FISIKA GAS
+        # =====================================
+        st.markdown("""
+        <div class='category-card'>
+            <div class='category-header'>
+                <div class='icon-circle'>🧬</div>
+                <div class='category-title'>Fisika Gas</div>
+            </div>
+        </div>
+        """, unsafe_allow_html=True)
+        
+        sub_col5, sub_col6 = st.columns(2)
+        with sub_col5:
+            if st.button("🔸 Gas Ideal", key="btn_ideal"):
                 st.session_state.menu = "Gas Ideal"
                 st.session_state.current_page = "calc_page"
                 st.rerun()
-
-            if st.button("Gas Nyata"):
-                st.session_state.menu = "Gas Nyata"
-                st.session_state.current_page = "calc_page"
-                st.rerun()
-
-            if st.button("Edukasi Isotop Gas"):
+            if st.button("🔸 Isotop Gas", key="btn_isotop"):
                 st.session_state.menu = "Edukasi Isotop Gas"
                 st.session_state.current_page = "calc_page"
                 st.rerun()
+        with sub_col6:
+            if st.button("🔸 Gas Nyata", key="btn_nyata"):
+                st.session_state.menu = "Gas Nyata"
+                st.session_state.current_page = "calc_page"
+                st.rerun()
+            if st.button("🔸 Entropi Gas", key="btn_entropi_gas"):
+                st.session_state.menu = "Entropi"
+                st.session_state.current_page = "calc_page"
+                st.rerun()
 
-    with col2:
-        with st.container():
-            st.markdown("### ⚛️ Termokimia")
-
-            if st.button("Entalpi"):
+    with main_col2:
+        # =====================================
+        # KARTU 2: TERMOKIMIA
+        # =====================================
+        st.markdown("""
+        <div class='category-card'>
+            <div class='category-header'>
+                <div class='icon-circle'>🧪</div>
+                <div class='category-title'>Termokimia</div>
+            </div>
+        </div>
+        """, unsafe_allow_html=True)
+        
+        sub_col3, sub_col4 = st.columns(2)
+        with sub_col3:
+            if st.button("🔸 Entalpi (ΔH)", key="btn_entalpi"):
                 st.session_state.menu = "Entalpi"
                 st.session_state.current_page = "calc_page"
                 st.rerun()
-
-            if st.button("Hukum Hess"):
-                st.session_state.menu = "Hukum Hess"
-                st.session_state.current_page = "calc_page"
-                st.rerun()
-
-            if st.button("ΔH Reaksi"):
+            if st.button("🔸 ΔH Reaksi", key="btn_dh_reaksi"):
                 st.session_state.menu = "ΔH Reaksi"
                 st.session_state.current_page = "calc_page"
                 st.rerun()
-
-            if st.button("Energi Gibbs"):
+        with sub_col4:
+            if st.button("🔸 Hukum Hess", key="btn_hess"):
+                st.session_state.menu = "Hukum Hess"
+                st.session_state.current_page = "calc_page"
+                st.rerun()
+            if st.button("🔸 Energi Gibbs", key="btn_gibbs"):
                 st.session_state.menu = "Energi Gibbs"
                 st.session_state.current_page = "calc_page"
                 st.rerun()
 
-        st.markdown("---")
-
-        with st.container():
-            st.markdown("### ⚙️ Proses Termodinamika")
-
-            if st.button("Proses Isobarik"):
+        # =====================================
+        # KARTU 4: PROSES TERMODINAMIKA
+        # =====================================
+        st.markdown("""
+        <div class='category-card'>
+            <div class='category-header'>
+                <div class='icon-circle'>⚙️</div>
+                <div class='category-title'>Proses Termodinamika</div>
+            </div>
+        </div>
+        """, unsafe_allow_html=True)
+        
+        sub_col7, sub_col8 = st.columns(2)
+        with sub_col7:
+            if st.button("🔸 Proses Isobarik", key="btn_isobarik"):
                 st.session_state.menu = "Proses Isobarik"
                 st.session_state.current_page = "calc_page"
                 st.rerun()
-
-            if st.button("Proses Isokhorik"):
+            if st.button("🔸 Proses Isotermal", key="btn_isotermal"):
+                st.session_state.menu = "Proses Isotermal"
+                st.session_state.current_page = "calc_page"
+                st.rerun()
+        with sub_col8:
+            if st.button("🔸 Proses Isokhorik", key="btn_isokhorik"):
                 st.session_state.menu = "Proses Isokhorik"
                 st.session_state.current_page = "calc_page"
                 st.rerun()
-
-            if st.button("Proses Isotermal"):
-                st.session_state.menu = "Proses Isotermal"
+            if st.button("🔸 Analisis Siklus", key="btn_siklus"):
+                st.session_state.menu = "Proses Isobarik"
                 st.session_state.current_page = "calc_page"
                 st.rerun()
 
