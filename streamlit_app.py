@@ -215,7 +215,7 @@ if st.session_state.current_page == "slide1":
 
     # BOX PENJELASAN
     st.info("""
-🎯 **Selamat Datang di ThermoCalculator!**
+ 🎯 **Selamat Datang di ThermoCalculator!**
 
 **ThermoCalculator** adalah platform komputasi termodinamika interaktif yang dirancang untuk membantu mahasiswa, akademisi, dan praktisi menyelesaikan analisis energi, gas, dan reaksi kimia secara cepat dan presisi.
 
