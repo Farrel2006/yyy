@@ -167,40 +167,42 @@ menu_list = [
 # =====================================
 if st.session_state.current_page == "slide1":
 
+    st.snow()
+
+    # CSS KHUSUS JUDUL
     st.markdown("""
     <style>
     .animated-title {
         font-size: 68px;
         font-weight: 900;
-        background: linear-gradient(90deg, #38bdf8, #60a5fa, #818cf8, #a855f7, #d946ef, #38bdf8);
+        background: linear-gradient(
+            90deg,
+            #38bdf8,
+            #60a5fa,
+            #818cf8,
+            #a855f7,
+            #d946ef,
+            #38bdf8
+        );
         background-size: 400% auto;
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
-        animation: gradientFlow 6s linear infinite, floatTitle 3s ease-in-out infinite;
-        text-shadow: 0 0 30px rgba(147,197,253,0.8);
+        animation: gradientFlow 6s linear infinite;
     }
 
     @keyframes gradientFlow {
-        0% { background-position: 0% center; }
-        100% { background-position: 400% center; }
-    }
-
-    .emoji-title {
-        font-size: 72px;
-        vertical-align: middle;
-        display: inline-block;
-        animation: floatTitle 3s ease-in-out infinite;
+        from {background-position:0% center;}
+        to {background-position:400% center;}
     }
     </style>
     """, unsafe_allow_html=True)
 
-    st.snow()
-
+    # JUDUL
     st.markdown("""
-    <div style="text-align:center; margin-top:10px;">
-        <span class="emoji-title">🧮</span>
+    <div style="text-align:center;">
+        <span style="font-size:70px;">🧮</span>
         <span class="animated-title">ThermoCalculator</span>
-        <span class="emoji-title">🌡️</span>
+        <span style="font-size:70px;">🌡️</span>
     </div>
     """, unsafe_allow_html=True)
 
@@ -209,33 +211,34 @@ if st.session_state.current_page == "slide1":
         unsafe_allow_html=True
     )
 
-    st.markdown("""
-    <div class='intro-box'>
-        <h3 style='margin-top:0; color:#93c5fd;'>🎯 Selamat Datang di ThermoCalculator!</h3>
+    st.write("")
 
-        <p>
-            <b>ThermoCalculator</b> adalah platform komputasi termodinamika
-            interaktif yang dirancang untuk membantu mahasiswa, akademisi,
-            dan praktisi menyelesaikan analisis energi, gas, dan reaksi kimia
-            secara cepat dan presisi.
-        </p>
+    # BOX PENJELASAN
+    st.info("""
+🎯 **Selamat Datang di ThermoCalculator!**
 
-        <hr style='border:0; border-top:1px solid rgba(255,255,255,0.12); margin:20px 0;'>
+**ThermoCalculator** adalah platform komputasi termodinamika interaktif yang dirancang untuk membantu mahasiswa, akademisi, dan praktisi menyelesaikan analisis energi, gas, dan reaksi kimia secara cepat dan presisi.
 
-        <h4 style='color:#a78bfa;'>🚀 Tujuan & Kegunaan Aplikasi</h4>
+---
 
-        <ul style='line-height:1.9;'>
-            <li><b>Automasi Perhitungan:</b> Mempercepat pencarian variabel termodinamika yang hilang tanpa manipulasi rumus manual yang rumit.</li>
-            <li><b>Validasi Laboratorium & Studi:</b> Membantu pengecekan data hasil praktikum seperti entalpi reaktan/produk, kalor gas, dan hukum Hess.</li>
-            <li><b>Pemahaman Konseptual:</b> Menyediakan penurunan rumus langkah demi langkah untuk mempermudah proses belajar mandiri.</li>
-        </ul>
-    </div>
-    """, unsafe_allow_html=True)
+🚀 **Tujuan & Kegunaan Aplikasi**
 
-    _, col_btn, _ = st.columns([1, 2, 1])
+• **Automasi Perhitungan** : Mempercepat pencarian variabel termodinamika yang hilang tanpa manipulasi rumus manual yang rumit.
+
+• **Validasi Laboratorium & Studi** : Membantu pengecekan data hasil praktikum seperti entalpi reaktan/produk, kalor gas, dan hukum Hess.
+
+• **Pemahaman Konseptual** : Menyediakan penurunan rumus langkah demi langkah (step-by-step) untuk mempermudah proses belajar mandiri.
+""")
+
+    st.write("")
+
+    _, col_btn, _ = st.columns([1,2,1])
 
     with col_btn:
-        if st.button("🚀 Lanjut ke Pemilihan Modul", key="next_to_slide2"):
+        if st.button(
+            "🚀 Lanjut ke Pemilihan Modul",
+            key="next_to_slide2"
+        ):
             st.session_state.current_page = "slide2"
             st.rerun()
 # =====================================
