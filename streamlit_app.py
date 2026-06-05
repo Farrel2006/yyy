@@ -162,6 +162,12 @@ menu_list = [
     "ΔH Reaksi", "Energi Gibbs", "Entropi", "Gas Ideal", "Gas Nyata",
     "Proses Isobarik", "Proses Isokhorik", "Proses Isotermal", "Edukasi Isotop Gas"
 ]
+import streamlit as st
+
+# Inisialisasi state halaman jika belum ada
+if 'current_page' not in st.session_state:
+    st.session_state.current_page = "slide1"
+
 # =====================================
 # SLIDE 1: JUDUL, SAMBUTAN & TUJUAN
 # =====================================
@@ -213,9 +219,14 @@ if st.session_state.current_page == "slide1":
 
     st.write("")
 
+    # --- BAGIAN YANG DIUBAH MENGIKUTI FOTO ---
     # BOX PENJELASAN
-    st.info("""
- 🎯 **Selamat Datang di ThermoCalculator!**
+    # st.info(...) telah diubah menjadi st.markdown(...)
+    # untuk menghilangkan bingkai info box dan warna latar belakang,
+    # sehingga sesuai dengan tampilan teks langsung di foto.
+    
+    st.markdown("""
+🎯 **Selamat Datang di ThermoCalculator!**
 
 **ThermoCalculator** adalah platform komputasi termodinamika interaktif yang dirancang untuk membantu mahasiswa, akademisi, dan praktisi menyelesaikan analisis energi, gas, dan reaksi kimia secara cepat dan presisi.
 
@@ -223,12 +234,11 @@ if st.session_state.current_page == "slide1":
 
 🚀 **Tujuan & Kegunaan Aplikasi**
 
-• **Automasi Perhitungan** : Mempercepat pencarian variabel termodinamika yang hilang tanpa manipulasi rumus manual yang rumit.
-
-• **Validasi Laboratorium & Studi** : Membantu pengecekan data hasil praktikum seperti entalpi reaktan/produk, kalor gas, dan hukum Hess.
-
-• **Pemahaman Konseptual** : Menyediakan penurunan rumus langkah demi langkah (step-by-step) untuk mempermudah proses belajar mandiri.
-""")
+*   **Automasi Perhitungan** : Mempercepat pencarian variabel termodinamika yang hilang tanpa manipulasi rumus manual yang rumit.
+*   **Validasi Laboratorium & Studi** : Membantu pengecekan data hasil praktikum seperti entalpi reaktan/produk, kalor gas, dan hukum Hess.
+*   **Pemahaman Konseptual** : Menyediakan penurunan rumus langkah demi langkah (step-by-step) untuk mempermudah proses belajar mandiri.
+""", unsafe_allow_html=True)
+    # ----------------------------------------------
 
     st.write("")
 
@@ -241,6 +251,13 @@ if st.session_state.current_page == "slide1":
         ):
             st.session_state.current_page = "slide2"
             st.rerun()
+
+# --- Placeholder untuk Slide 2 ---
+if st.session_state.current_page == "slide2":
+    st.title("Halaman Pemilihan Modul")
+    if st.button("Kembali"):
+        st.session_state.current_page = "slide1"
+        st.rerun()
 # =====================================
 # SLIDE 2: PILIHAN MODUL KALKULATOR
 # =====================================
