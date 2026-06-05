@@ -505,15 +505,51 @@ elif st.session_state.current_page == "calc_page":
             else:
                 st.error("Volume tidak valid untuk rasio logaritma alami.")
 
-    # 14. EDUKASI ISOTOP GAS
+  # 14. EDUKASI ISOTOP GAS
     elif menu == "Edukasi Isotop Gas":
         st.markdown("""
         ### 🧪 Efek Isotop pada Sifat Termodinamika Gas
-        Penggantian isotop (misalnya mengubah $H_2O$ menjadi $D_2O$ atau $H_2$ menjadi $D_2$) memengaruhi massa molekul murni tanpa mengubah struktur elektron luarnya secara signifikan.
+        Penggantian unsur dengan isotopnya yang lebih berat (misal $H_2 \rightarrow D_2$) akan mengubah sifat fisis makro zat tanpa mengganggu struktur konfigurasi elektron luarnya.
         
-        #### Akibat Utama pada Termodinamika:
-        1. **Kecepatan Root-Mean-Square ($v_{rms}$):** Berbanding terbalik dengan akar massa molar ($M$). Isotop yang lebih berat bergerak lebih lambat pada suhu yang sama.
+        #### Poin Teoretis Utama:
+        1. **Kecepatan Efektif ($v_{rms}$):** Berbanding terbalik dengan akar massa molar ($M$). Partikel isotop berat bergerak lebih lambat pada kesetimbangan termal yang sama.
         $$v_{rms} = \sqrt{\frac{3RT}{M}}$$
-        2. **Kapasitas Kalor ($C_v$ & $C_p$):** Tingkat energi vibrasi dan rotasi bergeser karena perubahan momen inersia molekul, memengaruhi kontribusi kuantum pada entropi gas.
+        2. **Pergeseran Kapasitas Kalor:** Perubahan massa merubah momen inersia molekul serta tingkat energi vibrasi kuantumnya.
         """)
-        st.success("Gunakan modul Gas Ideal/Nyata di menu utama untuk simulasi nilai makroskopis makro lainnya!")
+        
+        st.write("")
+        st.subheader("📊 Komputasi Nilai Efektif ($v_{rms}$) antar Isotop")
+        
+        pilihan_gas = st.selectbox(
+            "Pilih Kelompok Gas / Isotop:",
+            ["Hidrogen (H₂ vs D₂)", "Uranium Heksafluorida (²³⁵UF₆ vs ²³⁸UF₆)", "Uap Air (H₂O vs D₂O)"]
+        )
+        T_isotop = st.number_input("Suhu Sistem (K)", value=300.0, min_value=0.1)
+        
+        if pilihan_gas == "Hidrogen (H₂ vs D₂)":
+            label_1, M1 = "Hidrogen Biasa ($H_2$)", 0.002016  
+            label_2, M2 = "Deuterium ($D_2$)", 0.004028  
+        elif pilihan_gas == "Uranium Heksafluorida (²³⁵UF₆ vs ²³⁸UF₆)":
+            label_1, M1 = "²³⁵UF₆ Gas", 0.34903
+            label_2, M2 = "²³⁸UF₆ Gas", 0.35204
+        else:
+            label_1, M1 = "Uap Air Biasa ($H_2O$)", 0.018015
+            label_2, M2 = "Uap Air Berat ($D_2O$)", 0.020027
+
+        if st.button("Hitung Rasio Kecepatan"):
+            import math
+            R = 8.314
+            v1 = math.sqrt((3 * R * T_isotop) / M1)
+            v2 = math.sqrt((3 * R * T_isotop) / M2)
+            rasio = v1 / v2
+            
+            langkah = f"""
+            <h4>Hasil Simulasi Presentasi ({fmt(T_isotop)} K):</h4>
+            <ul>
+                <li><b>{label_1}</b> ($M$ = {fmt(M1*1000)} g/mol) $\rightarrow$ $v_{{rms}}$ = <b>{fmt(v1)} m/s</b></li>
+                <li><b>{label_2}</b> ($M$ = {fmt(M2*1000)} g/mol) $\rightarrow$ $v_{{rms}}$ = <b>{fmt(v2)} m/s</b></li>
+            </ul>
+            <hr style='border-top: 1px solid #e2e8f0;'>
+            📌 <b>Kesimpulan Analisis:</b> Senyawa gas ringan ({label_1}) berdifusi <b>{fmt(rasio)} kali lebih cepat</b> dibanding isotop beratnya. Perbedaan properti kinetik gas akibat fraksionasi isotop termodinamika ini diaplikasikan langsung pada teknologi pemisahan membran nuklir.
+            """
+            st.markdown(f"<div class='result'>{langkah}</div>", unsafe_allow_html=True)
