@@ -168,64 +168,18 @@ menu_list = [
 # =====================================
 if st.session_state.current_page == "slide1":
 
-    st.markdown("""
-    <style>
-
-    .animated-title {
-        font-size: 68px;
-        font-weight: 900;
-
-        background: linear-gradient(
-            90deg,
-            #38bdf8,
-            #60a5fa,
-            #818cf8,
-            #a855f7,
-            #d946ef,
-            #38bdf8
-        );
-
-        background-size: 400% auto;
-
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-
-        animation:
-            gradientFlow 6s linear infinite,
-            floatTitle 3s ease-in-out infinite;
-
-        text-shadow: 0 0 30px rgba(147,197,253,0.8);
-    }
-
-    @keyframes gradientFlow {
-        0% {
-            background-position: 0% center;
-        }
-
-        100% {
-            background-position: 400% center;
-        }
-    }
-
-    .emoji-title {
-        font-size: 72px;
-        vertical-align: middle;
-        display: inline-block;
-        animation: floatTitle 3s ease-in-out infinite;
-    }
-
-    </style>
-    """, unsafe_allow_html=True)
-
     st.snow()
 
-    # ==========================
+    # =====================================
     # JUDUL UTAMA
-    # ==========================
+    # =====================================
     st.markdown("""
     <div style="text-align:center; margin-top:10px;">
 
-        <span class="emoji-title">
+        <span style="
+            font-size:72px;
+            vertical-align:middle;
+        ">
             🧮
         </span>
 
@@ -233,7 +187,10 @@ if st.session_state.current_page == "slide1":
             ThermoCalculator
         </span>
 
-        <span class="emoji-title">
+        <span style="
+            font-size:72px;
+            vertical-align:middle;
+        ">
             🌡️
         </span>
 
@@ -245,9 +202,9 @@ if st.session_state.current_page == "slide1":
         unsafe_allow_html=True
     )
 
-    # ==========================
+    # =====================================
     # KOTAK PENJELASAN
-    # ==========================
+    # =====================================
     st.markdown("""
     <div class='intro-box'>
 
@@ -258,8 +215,8 @@ if st.session_state.current_page == "slide1":
         <p>
             <b>ThermoCalculator</b> adalah platform komputasi
             termodinamika interaktif yang dirancang untuk membantu
-            mahasiswa, akademisi, dan praktisi menyelesaikan
-            analisis energi, gas, dan reaksi kimia secara cepat
+            mahasiswa, akademisi, dan praktisi dalam menyelesaikan
+            analisis energi, gas, serta reaksi kimia secara cepat
             dan presisi.
         </p>
 
@@ -275,8 +232,8 @@ if st.session_state.current_page == "slide1":
 
             <li>
                 <b>Automasi Perhitungan:</b>
-                Mempercepat pencarian variabel termodinamika yang hilang
-                tanpa manipulasi rumus manual yang rumit.
+                Mempercepat pencarian variabel termodinamika yang
+                hilang tanpa manipulasi rumus manual yang rumit.
             </li>
 
             <li>
@@ -296,9 +253,9 @@ if st.session_state.current_page == "slide1":
     </div>
     """, unsafe_allow_html=True)
 
-    # ==========================
+    # =====================================
     # TOMBOL LANJUT
-    # ==========================
+    # =====================================
     _, col_btn, _ = st.columns([1, 2, 1])
 
     with col_btn:
