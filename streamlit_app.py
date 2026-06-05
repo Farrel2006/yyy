@@ -196,20 +196,103 @@ if st.session_state.current_page == "slide1":
 # SLIDE 2: PILIHAN MODUL KALKULATOR
 # =====================================
 elif st.session_state.current_page == "slide2":
-    st.markdown("<div class='title' style='font-size:50px;'>📊 Modul Komputasi</div>", unsafe_allow_html=True)
-    st.markdown("<div class='subtitle'>Silakan pilih salah satu modul analisis di bawah ini</div>", unsafe_allow_html=True)
     
-    if st.button("⬅️ Kembali ke Menu Pengantar", key="back_to_slide1"):
+   st.markdown("<div class='title' style='font-size:50px;'>📊 Modul Kalkulasi Termodinamika</div>", unsafe_allow_html=True)
+    st.markdown("<div class='subtitle'>Pilih modul berdasarkan kelompok materi</div>", unsafe_allow_html=True)
+
+    if st.button("⬅️ Kembali ke Menu Pengantar"):
         st.session_state.current_page = "slide1"
         st.rerun()
-        
-    st.write("") 
 
-    cols = st.columns(2)
-    for i, m in enumerate(menu_list):
-        with cols[i % 2]:
-            if st.button(f"⚡ {m}", key=f"menu_btn_{i}"):
-                st.session_state.menu = m
+    st.write("")
+
+    col1, col2 = st.columns(2)
+
+    with col1:
+        with st.container():
+            st.markdown("### 🔥 Energetika Dasar")
+
+            if st.button("Hukum 1 Termodinamika"):
+                st.session_state.menu = "Hukum 1 Termodinamika"
+                st.session_state.current_page = "calc_page"
+                st.rerun()
+
+            if st.button("Usaha"):
+                st.session_state.menu = "Usaha"
+                st.session_state.current_page = "calc_page"
+                st.rerun()
+
+            if st.button("Kalor"):
+                st.session_state.menu = "Kalor"
+                st.session_state.current_page = "calc_page"
+                st.rerun()
+
+            if st.button("Entropi"):
+                st.session_state.menu = "Entropi"
+                st.session_state.current_page = "calc_page"
+                st.rerun()
+
+        st.markdown("---")
+
+        with st.container():
+            st.markdown("### 💨 Fisika Gas")
+
+            if st.button("Gas Ideal"):
+                st.session_state.menu = "Gas Ideal"
+                st.session_state.current_page = "calc_page"
+                st.rerun()
+
+            if st.button("Gas Nyata"):
+                st.session_state.menu = "Gas Nyata"
+                st.session_state.current_page = "calc_page"
+                st.rerun()
+
+            if st.button("Edukasi Isotop Gas"):
+                st.session_state.menu = "Edukasi Isotop Gas"
+                st.session_state.current_page = "calc_page"
+                st.rerun()
+
+    with col2:
+        with st.container():
+            st.markdown("### ⚛️ Termokimia")
+
+            if st.button("Entalpi"):
+                st.session_state.menu = "Entalpi"
+                st.session_state.current_page = "calc_page"
+                st.rerun()
+
+            if st.button("Hukum Hess"):
+                st.session_state.menu = "Hukum Hess"
+                st.session_state.current_page = "calc_page"
+                st.rerun()
+
+            if st.button("ΔH Reaksi"):
+                st.session_state.menu = "ΔH Reaksi"
+                st.session_state.current_page = "calc_page"
+                st.rerun()
+
+            if st.button("Energi Gibbs"):
+                st.session_state.menu = "Energi Gibbs"
+                st.session_state.current_page = "calc_page"
+                st.rerun()
+
+        st.markdown("---")
+
+        with st.container():
+            st.markdown("### ⚙️ Proses Termodinamika")
+
+            if st.button("Proses Isobarik"):
+                st.session_state.menu = "Proses Isobarik"
+                st.session_state.current_page = "calc_page"
+                st.rerun()
+
+            if st.button("Proses Isokhorik"):
+                st.session_state.menu = "Proses Isokhorik"
+                st.session_state.current_page = "calc_page"
+                st.rerun()
+
+            if st.button("Proses Isotermal"):
+                st.session_state.menu = "Proses Isotermal"
                 st.session_state.current_page = "calc_page"
                 st.rerun()
 
