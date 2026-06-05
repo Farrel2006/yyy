@@ -130,9 +130,15 @@ html, body, [class*="css"] {
 
 .stAlert p { color: #f5d0fe !important; font-weight: 500; }
 .stAlert svg { fill: #d8b4fe !important; }
-h1,h2,h3 { color:#f5d0fe; }
+h1,h2,h3 { color:#f5d0fe; } 
+/* Efek hover kartu modul */
+.intro-box:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 0 35px rgba(147,197,253,0.25);
+    transition: all 0.3s ease;
+}
 </style>
-""", unsafe_allow_html=True)
+""", unsafe_allow_html=True) 
 
 # =====================================
 # UTILITIES
