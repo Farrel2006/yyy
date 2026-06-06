@@ -1,17 +1,13 @@
 import streamlit as st
 
-# =====================================
 # CONFIG
-# =====================================
 st.set_page_config(
     page_title="ThermoCalcz",
     page_icon="🌌",
     layout="wide"
 )
 
-# =====================================
 # CSS FUTURISTIK SUPER UPGRADE
-# =====================================
 st.markdown("""
 <style>
 html, body, [class*="css"] {
@@ -140,18 +136,14 @@ h1,h2,h3 { color:#f5d0fe; }
 </style>
 """, unsafe_allow_html=True) 
 
-# =====================================
 # UTILITIES
-# =====================================
 def fmt(angka):
     try:
         return f"{angka:g}"
     except:
         return str(angka)
 
-# =====================================
 # SESSION STATE NAVIGATION
-# =====================================
 if "current_page" not in st.session_state:
     st.session_state.current_page = "slide1"
 if "menu" not in st.session_state:
@@ -162,9 +154,7 @@ menu_list = [
     "ΔH Reaksi", "Energi Gibbs", "Entropi", "Gas Ideal", "Gas Nyata",
     "Proses Isobarik", "Proses Isokhorik", "Proses Isotermal", "Edukasi Isotop Gas"
 ]
-# =====================================
 # SLIDE 1: JUDUL, SAMBUTAN & TUJUAN
-# =====================================
 if st.session_state.current_page == "slide1":
 
     st.snow()
@@ -241,9 +231,7 @@ if st.session_state.current_page == "slide1":
         ):
             st.session_state.current_page = "slide2"
             st.rerun()
-# =====================================
 # SLIDE 2: PILIHAN MODUL KALKULATOR
-# =====================================
 elif st.session_state.current_page == "slide2":
 
     st.markdown("""
@@ -398,9 +386,7 @@ elif st.session_state.current_page == "slide2":
                     st.session_state.menu = "Edukasi Isotop Gas"
                     st.session_state.current_page = "calc_page"
                     st.rerun()
-# =====================================
 # PAGES: HALAMAN PERHITUNGAN AKTIF
-# =====================================
 elif st.session_state.current_page == "calc_page":
     menu = st.session_state.menu
 
@@ -628,10 +614,6 @@ elif st.session_state.current_page == "calc_page":
                 hasil = (P * V) / (n * R) if n != 0 else 0
                 langkah = f"T = ({fmt(P)} × {fmt(V)}) / ({fmt(n)} × {R}) = <b>{fmt(hasil)} K</b>"
             st.markdown(f"<div class='result'><h3>Langkah Penyelesaian</h3>{langkah}</div>", unsafe_allow_html=True)
-
-    # =================================================================
-    # BAGIAN LANJUTAN: ISI LOGIKA HALAMAN PERHITUNGAN (MODUL 10 - 14)
-    # =================================================================
 
     # 10. GAS NYATA
     elif menu == "Gas Nyata":
