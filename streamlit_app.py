@@ -696,7 +696,7 @@ elif st.session_state.current_page == "calc_page":
             else:
                 st.error("Volume tidak valid untuk rasio logaritma alami.")
 
-     # 14. EDUKASI ISOTOP GAS
+   # 14. EDUKASI ISOTOP GAS
     elif menu == "Edukasi Isotop Gas":
         # Bagian teks dipisah dengan st.latex agar rumusnya merender sempurna
         st.markdown("""
@@ -739,13 +739,14 @@ elif st.session_state.current_page == "calc_page":
             v2 = math.sqrt((3 * R * T_isotop) / M2)
             rasio = v1 / v2
             
-            langkah = f"""
-            <h4>Hasil Simulasi Presentasi ({fmt(T_isotop)} K):</h4>
-            <ul>
-                <li><b>{label_1}</b> ($M$ = {fmt(M1*1000)} g/mol) $\rightarrow$ $v_{{rms}}$ = <b>{fmt(v1)} m/s</b></li>
-                <li><b>{label_2}</b> ($M$ = {fmt(M2*1000)} g/mol) $\rightarrow$ $v_{{rms}}$ = <b>{fmt(v2)} m/s</b></li>
-            </ul>
-            <hr style='border-top: 1px solid #e2e8f0;'>
-            📌 <b>Kesimpulan Analisis:</b> Senyawa gas ringan ({label_1}) berdifusi <b>{fmt(rasio)} kali lebih cepat</b> dibanding isotop beratnya. Perbedaan properti kinetik gas akibat fraksionasi isotop termodinamika ini diaplikasikan langsung pada teknologi pemisahan membran nuklir.
-            """
-            st.markdown(f"<div class='result'>{langkah}</div>", unsafe_allow_html=True)
+            st.markdown(f"### 📊 Hasil Simulasi Presentasi ({fmt(T_isotop)} K):")
+            
+            with st.container(border=True):
+                st.markdown(f"""
+                * **{label_1}** ($M$ = {fmt(M1*1000)} g/mol) $\\rightarrow$ $v_{{rms}}$ = **{fmt(v1)} m/s**
+                * **{label_2}** ($M$ = {fmt(M2*1000)} g/mol) $\\rightarrow$ $v_{{rms}}$ = **{fmt(v2)} m/s**
+                
+                ---
+                
+                📌 **Kesimpulan Analisis:** Senyawa gas ringan ({label_1}) berdifusi **{fmt(rasio)} kali lebih cepat** dibanding isotop beratnya. Perbedaan properti kinetik gas akibat fraksionasi isotop termodinamika ini diaplikasikan langsung pada teknologi pemisahan membran nuklir.
+                """)
