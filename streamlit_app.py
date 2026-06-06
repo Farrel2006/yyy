@@ -202,20 +202,20 @@ if st.session_state.current_page == "slide1":
 
     st.write("")
 
-    # BOX PENJELASAN (Menggunakan container dengan border agar perataan list Markdown murni berfungsi sempurna)
+    # BOX PENJELASAN
     with st.container(border=True):
         st.markdown("""
         ### 🎯 Selamat Datang di ThermoCalculator!
         
-        **ThermoCalculator** adalah platform komputasi termodinamika interaktif yang dirancang untuk membantu mahasiswa, akademisi, dan praktisi menyelesaikan analisis energi, gas, dan reaksi kimia secara cepat dan presisi.
+        **ThermoCalculator** adalah platform komputasi termodinamika interaktif yang jadi "asisten" andalan buat mahasiswa, akademisi, sampai praktisi. Alat ini dibuat khusus untuk memangkas waktu pengerjaan analisis energi, perhitungan gas, hingga reaksi kimia dengan hasil yang akurat.
         
         ---
         
         ### 🚀 Tujuan & Kegunaan Aplikasi
         
-        * **Automasi Perhitungan** : Mempercepat pencarian variabel termodinamika yang hilang tanpa manipulasi rumus manual yang rumit.
-        * **Validasi Laboratorium & Studi** : Membantu pengecekan data hasil praktikum seperti entalpi reaktan/produk, kalor gas, dan hukum Hess.
-        * **Pemahaman Konseptual** : Menyediakan penurunan rumus langkah demi langkah (*step-by-step*) untuk mempermudah proses belajar mandiri.
+        1. **Hitung Instan & Otomatis** : Hemat waktu Anda dengan otomatisasi pencarian variabel termodinamika, tanpa perlu repot memanipulasi rumus manual yang rumit.
+        2. **Validasi Hasil Studi & Lab** : Validasi data hasil praktikum Anda secara akurat, mulai dari perhitungan entalpi reaktan/produk, kalor gas, hingga Hukum Hess.
+        3. **Pahami Konsep, Bukan Cuma Hasil** : Dukung proses belajar Anda lewat fitur penurunan rumus langkah demi langkah (*step-by-step*) untuk pemahaman konseptual yang lebih mendalam.
         """)
 
     st.write("")
