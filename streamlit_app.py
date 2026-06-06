@@ -214,8 +214,8 @@ if st.session_state.current_page == "slide1":
         
         ### 🚀 Tujuan & Kegunaan Aplikasi
         
-        * **Automasi Perhitungan** : Hitung Instan & Otomatis: Hemat waktu Anda dengan otomatisasi pencarian variabel termodinamika, tanpa perlu repot memanipulasi rumus manual yang rumit.
-        * **Validasi Laboratorium & Studi** : Validasi Hasil Studi & Lab: Validasi data hasil praktikum Anda secara akurat, mulai dari perhitungan entalpi reaktan/produk, kalor gas, hingga Hukum Hess.
+        * **Hitung Instan & Otomatis** : Hemat waktu Anda dengan otomatisasi pencarian variabel termodinamika, tanpa perlu repot memanipulasi rumus manual yang rumit.
+        * **Validasi Hasil Studi & Lab** : Validasi data hasil praktikum Anda secara akurat, mulai dari perhitungan entalpi reaktan/produk, kalor gas, hingga Hukum Hess.
         * **Pemahaman Konseptual** : Pahami Konsep, Bukan Cuma Hasil: Dukung proses belajar Anda lewat fitur penurunan rumus langkah demi langkah (step-by-step) untuk pemahaman konseptual yang lebih mendalam.
 
     st.write("")
