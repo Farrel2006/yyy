@@ -1,13 +1,17 @@
 import streamlit as st
 
+# =====================================
 # CONFIG
+# =====================================
 st.set_page_config(
     page_title="ThermoCalcz",
     page_icon="🌌",
     layout="wide"
 )
 
+# =====================================
 # CSS FUTURISTIK SUPER UPGRADE
+# =====================================
 st.markdown("""
 <style>
 html, body, [class*="css"] {
@@ -134,16 +138,22 @@ h1,h2,h3 { color:#f5d0fe; }
     transition: all 0.3s ease;
 }
 </style>
-""", unsafe_allow_html=True) 
+""", unsafe_allow_html=True)
 
+
+# =====================================
 # UTILITIES
+# =====================================
 def fmt(angka):
     try:
         return f"{angka:g}"
     except:
         return str(angka)
 
+
+# =====================================
 # SESSION STATE NAVIGATION
+# =====================================
 if "current_page" not in st.session_state:
     st.session_state.current_page = "slide1"
 if "menu" not in st.session_state:
@@ -154,7 +164,9 @@ menu_list = [
     "ΔH Reaksi", "Energi Gibbs", "Entropi", "Gas Ideal", "Gas Nyata",
     "Proses Isobarik", "Proses Isokhorik", "Proses Isotermal", "Edukasi Isotop Gas"
 ]
+# =====================================
 # SLIDE 1: JUDUL, SAMBUTAN & TUJUAN
+# =====================================
 if st.session_state.current_page == "slide1":
 
     st.snow()
@@ -203,33 +215,37 @@ if st.session_state.current_page == "slide1":
 
     st.write("")
 
-    # BOX PENJELASAN (Menggunakan container dengan border agar perataan list Markdown murni berfungsi sempurna)
-    with st.container(border=True):
-        st.markdown("""
-        ### 🎯 Selamat Datang di ThermoCalculator!
-        
-        **ThermoCalculator** adalah platform komputasi termodinamika interaktif yang jadi "asisten" andalan buat mahasiswa, akademisi, sampai praktisi. Alat ini dibuat khusus untuk memangkas waktu pengerjaan analisis energi, perhitungan gas, hingga reaksi kimia dengan hasil yang akurat.
-        
-        ---
-        
-        ### 🚀 Tujuan & Kegunaan Aplikasi
-        
-        * **Hitung Instan & Otomatis** : Hemat waktu Anda dengan otomatisasi pencarian variabel termodinamika, tanpa perlu repot memanipulasi rumus manual yang rumit.
-        * **Validasi Hasil Studi & Lab** : Validasi data hasil praktikum Anda secara akurat, mulai dari perhitungan entalpi reaktan/produk, kalor gas, hingga Hukum Hess.
-        * **Pemahaman Konseptual** : Pahami Konsep, Bukan Cuma Hasil: Dukung proses belajar Anda lewat fitur penurunan rumus langkah demi langkah (step-by-step) untuk pemahaman konseptual yang lebih mendalam.
+    # BOX PENJELASAN
+    st.info("""
+ 🎯 **Selamat Datang di ThermoCalculator!**
+
+**ThermoCalculator** adalah platform komputasi termodinamika interaktif yang dirancang untuk membantu mahasiswa, akademisi, dan praktisi menyelesaikan analisis energi, gas, dan reaksi kimia secara cepat dan presisi.
+
+---
+
+🚀 **Tujuan & Kegunaan Aplikasi**
+
+• **Automasi Perhitungan** : Mempercepat pencarian variabel termodinamika yang hilang tanpa manipulasi rumus manual yang rumit.
+
+• **Validasi Laboratorium & Studi** : Membantu pengecekan data hasil praktikum seperti entalpi reaktan/produk, kalor gas, dan hukum Hess.
+
+• **Pemahaman Konseptual** : Menyediakan penurunan rumus langkah demi langkah (step-by-step) untuk mempermudah proses belajar mandiri.
+""")
 
     st.write("")
 
-    _, col_btn, _ = st.columns([1,2,1])
+    _, col_btn, _ = st.columns([1, 2, 1])
 
     with col_btn:
         if st.button(
-            "🚀 Lanjut ke Pemilihan Modul",
-            key="next_to_slide2"
+                "🚀 Lanjut ke Pemilihan Modul",
+                key="next_to_slide2"
         ):
             st.session_state.current_page = "slide2"
             st.rerun()
+# =====================================
 # SLIDE 2: PILIHAN MODUL KALKULATOR
+# =====================================
 elif st.session_state.current_page == "slide2":
 
     st.markdown("""
@@ -384,7 +400,9 @@ elif st.session_state.current_page == "slide2":
                     st.session_state.menu = "Edukasi Isotop Gas"
                     st.session_state.current_page = "calc_page"
                     st.rerun()
+# =====================================
 # PAGES: HALAMAN PERHITUNGAN AKTIF
+# =====================================
 elif st.session_state.current_page == "calc_page":
     menu = st.session_state.menu
 
@@ -399,8 +417,9 @@ elif st.session_state.current_page == "calc_page":
     # 1. HUKUM 1 TERMODINAMIKA
     if menu == "Hukum 1 Termodinamika":
         st.latex(r"\Delta U = Q - W")
-        target = st.selectbox("Pilih variabel yang ingin dicari:", ["ΔU (Perubahan Energi Dalam)", "Q (Kalor)", "W (Usaha)"])
-        
+        target = st.selectbox("Pilih variabel yang ingin dicari:",
+                              ["ΔU (Perubahan Energi Dalam)", "Q (Kalor)", "W (Usaha)"])
+
         Q = st.number_input("Q (kJ)", value=0.0) if target != "Q (Kalor)" else 0.0
         W = st.number_input("W (kJ)", value=0.0) if target != "W (Usaha)" else 0.0
         dU = st.number_input("ΔU (kJ)", value=0.0) if target != "ΔU (Perubahan Energi Dalam)" else 0.0
@@ -421,7 +440,8 @@ elif st.session_state.current_page == "calc_page":
     # 2. USAHA
     elif menu == "Usaha":
         st.latex(r"W = P \cdot \Delta V")
-        target = st.selectbox("Pilih variabel yang ingin dicari:", ["W (Usaha)", "P (Tekanan)", "ΔV (Perubahan Volume)"])
+        target = st.selectbox("Pilih variabel yang ingin dicari:",
+                              ["W (Usaha)", "P (Tekanan)", "ΔV (Perubahan Volume)"])
 
         W = st.number_input("W (J)", value=0.0) if target != "W (Usaha)" else 0.0
         P = st.number_input("P (Pa)", value=0.0) if target != "P (Tekanan)" else 0.0
@@ -443,7 +463,8 @@ elif st.session_state.current_page == "calc_page":
     # 3. KALOR
     elif menu == "Kalor":
         st.latex(r"Q = m \cdot c \cdot \Delta T")
-        target = st.selectbox("Pilih variabel yang ingin dicari:", ["Q (Kalor)", "m (Massa)", "c (Kalor Jenis)", "ΔT (Perubahan Suhu)"])
+        target = st.selectbox("Pilih variabel yang ingin dicari:",
+                              ["Q (Kalor)", "m (Massa)", "c (Kalor Jenis)", "ΔT (Perubahan Suhu)"])
 
         Q = st.number_input("Q (J)", value=0.0) if target != "Q (Kalor)" else 0.0
         m = st.number_input("m (g)", value=0.0) if target != "m (Massa)" else 0.0
@@ -469,8 +490,9 @@ elif st.session_state.current_page == "calc_page":
     # 4. ENTALPI
     elif menu == "Entalpi":
         st.latex(r"\Delta H = \Delta U + \Delta n \cdot R \cdot T")
-        target = st.selectbox("Pilih variabel yang ingin dicari:", ["ΔH (Entalpi)", "ΔU (Energi Dalam)", "Δn (Perubahan Mol)", "T (Suhu)"])
-        R = 0.008314  
+        target = st.selectbox("Pilih variabel yang ingin dicari:",
+                              ["ΔH (Entalpi)", "ΔU (Energi Dalam)", "Δn (Perubahan Mol)", "T (Suhu)"])
+        R = 0.008314
 
         dH = st.number_input("ΔH (kJ)", value=0.0) if target != "ΔH (Entalpi)" else 0.0
         dU = st.number_input("ΔU (kJ)", value=0.0) if target != "ΔU (Energi Dalam)" else 0.0
@@ -503,7 +525,8 @@ elif st.session_state.current_page == "calc_page":
             if st.button("Hitung"):
                 arr = [float(x) for x in data.split(",") if x.strip() != ""]
                 st.balloons()
-                st.markdown(f"<div class='result'><h3>Hasil</h3>ΣΔH = <b>{fmt(sum(arr))} kJ</b></div>", unsafe_allow_html=True)
+                st.markdown(f"<div class='result'><h3>Hasil</h3>ΣΔH = <b>{fmt(sum(arr))} kJ</b></div>",
+                            unsafe_allow_html=True)
         else:
             total_h = st.number_input("Masukkan ΔH Total", value=0.0)
             data_parsial = st.text_input("Masukkan ΔH komponen lain yang diketahui (pisahkan dengan koma)", "10,-20")
@@ -511,7 +534,9 @@ elif st.session_state.current_page == "calc_page":
                 arr = [float(x) for x in data_parsial.split(",") if x.strip() != ""]
                 hasil = total_h - sum(arr)
                 st.balloons()
-                st.markdown(f"<div class='result'><h3>Hasil</h3>ΔH_x = {fmt(total_h)} - {fmt(sum(arr))} <br> ΔH_x = <b>{fmt(hasil)} kJ</b></div>", unsafe_allow_html=True)
+                st.markdown(
+                    f"<div class='result'><h3>Hasil</h3>ΔH_x = {fmt(total_h)} - {fmt(sum(arr))} <br> ΔH_x = <b>{fmt(hasil)} kJ</b></div>",
+                    unsafe_allow_html=True)
 
     # 6. ΔH REAKSI
     elif menu == "ΔH Reaksi":
@@ -541,7 +566,8 @@ elif st.session_state.current_page == "calc_page":
     # 7. ENERGI GIBBS
     elif menu == "Energi Gibbs":
         st.latex(r"\Delta G = \Delta H - T \cdot \Delta S")
-        target = st.selectbox("Pilih variabel yang ingin dicari:", ["ΔG (Energi Gibbs)", "ΔH (Entalpi)", "T (Suhu dalam K)", "ΔS (Entropi dalam kJ/K)"])
+        target = st.selectbox("Pilih variabel yang ingin dicari:",
+                              ["ΔG (Energi Gibbs)", "ΔH (Entalpi)", "T (Suhu dalam K)", "ΔS (Entropi dalam kJ/K)"])
 
         dG = st.number_input("ΔG (kJ)", value=0.0) if target != "ΔG (Energi Gibbs)" else 0.0
         dH = st.number_input("ΔH (kJ)", value=0.0) if target != "ΔH (Entalpi)" else 0.0
@@ -589,7 +615,8 @@ elif st.session_state.current_page == "calc_page":
     # 9. GAS IDEAL
     elif menu == "Gas Ideal":
         st.latex(r"P \cdot V = n \cdot R \cdot T")
-        target = st.selectbox("Pilih variabel yang ingin dicari:", ["P (Tekanan)", "V (Volume)", "n (Jumlah Mol)", "T (Suhu)"])
+        target = st.selectbox("Pilih variabel yang ingin dicari:",
+                              ["P (Tekanan)", "V (Volume)", "n (Jumlah Mol)", "T (Suhu)"])
         R = 0.0821
 
         P = st.number_input("P (atm)", value=0.0) if target != "P (Tekanan)" else 0.0
@@ -613,6 +640,10 @@ elif st.session_state.current_page == "calc_page":
                 langkah = f"T = ({fmt(P)} × {fmt(V)}) / ({fmt(n)} × {R}) = <b>{fmt(hasil)} K</b>"
             st.markdown(f"<div class='result'><h3>Langkah Penyelesaian</h3>{langkah}</div>", unsafe_allow_html=True)
 
+    # =================================================================
+    # BAGIAN LANJUTAN: ISI LOGIKA HALAMAN PERHITUNGAN (MODUL 10 - 14)
+    # =================================================================
+
     # 10. GAS NYATA
     elif menu == "Gas Nyata":
         st.latex(r"\left(P + \frac{an^2}{V^2}\right)(V - nb) = nRT")
@@ -623,7 +654,7 @@ elif st.session_state.current_page == "calc_page":
         V = st.number_input("V (L)", value=0.0)
         a = st.number_input("a (atm.L²/mol²)", value=0.0)
         b = st.number_input("b (L/mol)", value=0.0)
-        
+
         P = st.number_input("P (atm)", value=0.0) if target != "P (Tekanan)" else 0.0
         T = st.number_input("T (K)", value=0.0) if target != "T (Suhu)" else 0.0
 
@@ -647,7 +678,9 @@ elif st.session_state.current_page == "calc_page":
         V2 = st.number_input("V2 (m³ atau L)", value=0.0)
         if st.button("Hitung Usaha Isobarik"):
             hasil = P * (V2 - V1)
-            st.markdown(f"<div class='result'>W = {fmt(P)} × ({fmt(V2)} - {fmt(V1)}) = <b>{fmt(hasil)} Joule/Liter-atm</b></div>", unsafe_allow_html=True)
+            st.markdown(
+                f"<div class='result'>W = {fmt(P)} × ({fmt(V2)} - {fmt(V1)}) = <b>{fmt(hasil)} Joule/Liter-atm</b></div>",
+                unsafe_allow_html=True)
 
     # 12. PROSES ISOKHORIK
     elif menu == "Proses Isokhorik":
@@ -658,42 +691,47 @@ elif st.session_state.current_page == "calc_page":
         dT = st.number_input("ΔT (K)", value=0.0)
         if st.button("Hitung Kalor/Energi Dalam"):
             hasil = n * Cv * dT
-            st.markdown(f"<div class='result'>W = 0 <br> Q = ΔU = {fmt(n)} × {fmt(Cv)} × {fmt(dT)} = <b>{fmt(hasil)} Joule</b></div>", unsafe_allow_html=True)
+            st.markdown(
+                f"<div class='result'>W = 0 <br> Q = ΔU = {fmt(n)} × {fmt(Cv)} × {fmt(dT)} = <b>{fmt(hasil)} Joule</b></div>",
+                unsafe_allow_html=True)
 
     # 13. PROSES ISOTERMAL
     elif menu == "Proses Isotermal":
         st.latex(r"W = Q = n \cdot R \cdot T \cdot \ln\left(\frac{V_2}{V_1}\right)")
-        R = 8.314  
+        R = 8.314
         n = st.number_input("n (mol)", value=0.0)
         T = st.number_input("T (K)", value=0.0)
         V1 = st.number_input("V1 (L atau m³)", value=1.0)
         V2 = st.number_input("V2 (L atau m³)", value=1.0)
         if st.button("Hitung Kerja Isotermal"):
             import math
-            if V1 != 0 and V2/V1 > 0:
+
+            if V1 != 0 and V2 / V1 > 0:
                 hasil = n * R * T * math.log(V2 / V1)
-                st.markdown(f"<div class='result'>W = {fmt(n)} × {R} × {fmt(T)} × ln({fmt(V2)}/{fmt(V1)}) = <b>{fmt(hasil)} Joule</b></div>", unsafe_allow_html=True)
+                st.markdown(
+                    f"<div class='result'>W = {fmt(n)} × {R} × {fmt(T)} × ln({fmt(V2)}/{fmt(V1)}) = <b>{fmt(hasil)} Joule</b></div>",
+                    unsafe_allow_html=True)
             else:
                 st.error("Volume tidak valid untuk rasio logaritma alami.")
 
-   # 14. EDUKASI ISOTOP GAS
+    # 14. EDUKASI ISOTOP GAS
     elif menu == "Edukasi Isotop Gas":
         # Bagian teks dipisah dengan st.latex agar rumusnya merender sempurna
         st.markdown("""
         ### 🧪 Efek Isotop pada Sifat Termodinamika Gas
         Penggantian unsur dengan isotopnya yang lebih berat (misal $H_2 \\rightarrow D_2$) akan mengubah sifat fisis makro zat tanpa mengganggu struktur konfigurasi elektron luarnya.
-        
+
         #### Poin Teoretis Utama:
         1. **Kecepatan Efektif ($v_{rms}$):** Berbanding terbalik dengan akar massa molar ($M$). Partikel isotop berat bergerak lebih lambat pada kesetimbangan termal yang sama.
         """)
-        
+
         # Menggunakan st.latex agar rumus pecahan dan akar tampil sempurna
         st.latex(r"v_{rms} = \sqrt{\frac{3RT}{M}}")
-        
+
         st.markdown("""
         2. **Pergeseran Kapasitas Kalor:** Perubahan massa merubah momen inersia molekul serta tingkat energi vibrasi kuantumnya.
         """)
-        
+
         st.write("")
         st.subheader("📊 Komputasi Nilai Efektif ($v_{rms}$) antar Isotop")
         pilihan_gas = st.selectbox(
@@ -701,10 +739,10 @@ elif st.session_state.current_page == "calc_page":
             ["Hidrogen (H₂ vs D₂)", "Uranium Heksafluorida (²³⁵UF₆ vs ²³⁸UF₆)", "Uap Air (H₂O vs D₂O)"]
         )
         T_isotop = st.number_input("Suhu Sistem (K)", value=300.0, min_value=0.1)
-        
+
         if pilihan_gas == "Hidrogen (H₂ vs D₂)":
-            label_1, M1 = "Hidrogen Biasa ($H_2$)", 0.002016  
-            label_2, M2 = "Deuterium ($D_2$)", 0.004028  
+            label_1, M1 = "Hidrogen Biasa ($H_2$)", 0.002016
+            label_2, M2 = "Deuterium ($D_2$)", 0.004028
         elif pilihan_gas == "Uranium Heksafluorida (²³⁵UF₆ vs ²³⁸UF₆)":
             label_1, M1 = "²³⁵UF₆ Gas", 0.34903
             label_2, M2 = "²³⁸UF₆ Gas", 0.35204
@@ -714,19 +752,20 @@ elif st.session_state.current_page == "calc_page":
 
         if st.button("Hitung Rasio Kecepatan"):
             import math
+
             R = 8.314
             v1 = math.sqrt((3 * R * T_isotop) / M1)
             v2 = math.sqrt((3 * R * T_isotop) / M2)
             rasio = v1 / v2
-            
+
             st.markdown(f"### 📊 Hasil Simulasi Presentasi ({fmt(T_isotop)} K):")
-            
+
             with st.container(border=True):
                 st.markdown(f"""
-                * **{label_1}** ($M$ = {fmt(M1*1000)} g/mol) $\\rightarrow$ $v_{{rms}}$ = **{fmt(v1)} m/s**
-                * **{label_2}** ($M$ = {fmt(M2*1000)} g/mol) $\\rightarrow$ $v_{{rms}}$ = **{fmt(v2)} m/s**
-                
+                * **{label_1}** ($M$ = {fmt(M1 * 1000)} g/mol) $\\rightarrow$ $v_{{rms}}$ = **{fmt(v1)} m/s**
+                * **{label_2}** ($M$ = {fmt(M2 * 1000)} g/mol) $\\rightarrow$ $v_{{rms}}$ = **{fmt(v2)} m/s**
+
                 ---
-                
+
                 📌 **Kesimpulan Analisis:** Senyawa gas ringan ({label_1}) berdifusi **{fmt(rasio)} kali lebih cepat** dibanding isotop beratnya. Perbedaan properti kinetik gas akibat fraksionasi isotop termodinamika ini diaplikasikan langsung pada teknologi pemisahan membran nuklir.
                 """)
