@@ -208,7 +208,7 @@ if st.session_state.current_page == "slide1":
         st.markdown("""
         ### 🎯 Selamat Datang di ThermoCalculator!
         
-        **ThermoCalculator** adalah platform komputasi termodinamika interaktif yang dirancang untuk membantu mahasiswa, akademisi, dan praktisi menyelesaikan analisis energi, gas, dan reaksi kimia secara cepat dan presisi.
+        **ThermoCalculator** adalah platform komputasi termodinamika interaktif yang jadi "asisten" andalan buat mahasiswa, akademisi, sampai praktisi. Alat ini dibuat khusus untuk memangkas waktu pengerjaan analisis energi, perhitungan gas, hingga reaksi kimia dengan hasil yang akurat.
         
         ---
         
