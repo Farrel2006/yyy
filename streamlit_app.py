@@ -202,31 +202,30 @@ if st.session_state.current_page == "slide1":
 
     st.write("")
 
-    # BOX PENJELASAN
-    st.info("""
- 🎯 **Selamat Datang di ThermoCalculator!**
-
-**ThermoCalculator** adalah platform komputasi termodinamika interaktif yang dirancang untuk membantu mahasiswa, akademisi, dan praktisi menyelesaikan analisis energi, gas, dan reaksi kimia secara cepat dan presisi.
-
----
-
-🚀 **Tujuan & Kegunaan Aplikasi**
-
-• **Automasi Perhitungan** : Mempercepat pencarian variabel termodinamika yang hilang tanpa manipulasi rumus manual yang rumit.
-
-• **Validasi Laboratorium & Studi** : Membantu pengecekan data hasil praktikum seperti entalpi reaktan/produk, kalor gas, dan hukum Hess.
-
-• **Pemahaman Konseptual** : Menyediakan penurunan rumus langkah demi langkah (step-by-step) untuk mempermudah proses belajar mandiri.
-""")
+    # BOX PENJELASAN (Menggunakan container dengan border agar perataan list Markdown murni berfungsi sempurna)
+    with st.container(border=True):
+        st.markdown("""
+        ### 🎯 Selamat Datang di ThermoCalculator!
+        
+        **ThermoCalculator** adalah platform komputasi termodinamika interaktif yang dirancang untuk membantu mahasiswa, akademisi, dan praktisi menyelesaikan analisis energi, gas, dan reaksi kimia secara cepat dan presisi.
+        
+        ---
+        
+        ### 🚀 Tujuan & Kegunaan Aplikasi
+        
+        * **Automasi Perhitungan** : Mempercepat pencarian variabel termodinamika yang hilang tanpa manipulasi rumus manual yang rumit.
+        * **Validasi Laboratorium & Studi** : Membantu pengecekan data hasil praktikum seperti entalpi reaktan/produk, kalor gas, dan hukum Hess.
+        * **Pemahaman Konseptual** : Menyediakan penurunan rumus langkah demi langkah (*step-by-step*) untuk mempermudah proses belajar mandiri.
+        """)
 
     st.write("")
 
-    _, col_btn, _ = st.columns([1, 2, 1])
+    _, col_btn, _ = st.columns([1,2,1])
 
     with col_btn:
         if st.button(
-                "🚀 Lanjut ke Pemilihan Modul",
-                key="next_to_slide2"
+            "🚀 Lanjut ke Pemilihan Modul",
+            key="next_to_slide2"
         ):
             st.session_state.current_page = "slide2"
             st.rerun()
